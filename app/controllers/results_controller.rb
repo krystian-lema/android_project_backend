@@ -47,7 +47,7 @@ class ResultsController < ApplicationController
 
   def parsed_nickname parsed_body
     if parsed_body['nickname'].nil?
-      return 0
+      return "noname"
     else
       return parsed_body['nickname']
     end
