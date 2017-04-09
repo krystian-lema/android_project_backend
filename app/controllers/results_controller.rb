@@ -8,7 +8,8 @@ class ResultsController < ApplicationController
 	def add_result
 		parsed_body = get_parse_body
 		@result = Result.create(
-			score: parsed_body['score'],
+			score: parsed_score(parsed_body),
+      nickname: parsed_nickname(parsed_body),
 			date: Time.now)
 
 		if @result.save
@@ -26,7 +27,6 @@ class ResultsController < ApplicationController
     end
 	end
 
-
   def get_parse_body
     request.body.rewind
     request_body = request.body.read
@@ -35,6 +35,22 @@ class ResultsController < ApplicationController
     end
     parsed_body = JSON.parse(request_body)
     parsed_body
+  end
+
+  def parsed_score parsed_body
+    if parsed_body['score'].nil?
+      return 0
+    else
+      return parsed_body['score']
+    end
+  end
+
+  def parsed_nickname parsed_body
+    if parsed_body['nickname'].nil?
+      return 0
+    else
+      return parsed_body['nickname']
+    end
   end
 
 end

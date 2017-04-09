@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 20170406163036) do
 
   create_table "results", force: :cascade do |t|
     t.integer  "score"
+    t.string   "nickname"
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

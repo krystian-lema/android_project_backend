@@ -1,1 +1,1 @@
-json.extract! result, :score, :date
+json.extract! result, :nickname, :score, :date
